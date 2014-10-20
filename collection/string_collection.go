@@ -22,6 +22,10 @@ func MakeStringCollection(items map[string]string) stringCollection {
 	return a
 }
 
+func FromJSON(json string) (stringCollection, error) {
+	
+}
+
 // All items in the collection are returned
 func (c *stringCollection) All() map[string]string {
 	return c.items
