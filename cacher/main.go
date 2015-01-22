@@ -34,6 +34,7 @@ func InitCache(options Options) {
 
 	if cacher.Hosts == "" {
 		cacher.Engine = LOCALCACHE
+		log.Println("-- Overriding Engine with LOCALCACHE since Hosts is empty --")
 	}
 
 	switch cacher.Engine {
