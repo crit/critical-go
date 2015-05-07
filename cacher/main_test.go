@@ -34,7 +34,7 @@ func (t *CacherSuite) TestSet(ch *C) {
 
 	cacher.InitCache(opts)
 
-	cacher.Set("a", "b")
+	cacher.Set("a", []byte("b"))
 }
 
 func (t *CacherSuite) TestGet(ch *C) {
@@ -43,11 +43,11 @@ func (t *CacherSuite) TestGet(ch *C) {
 
 	cacher.InitCache(opts)
 
-	cacher.Set("c", "d")
+	cacher.Set("c", []byte("d"))
 
 	a := cacher.Get("c")
 
-	ch.Assert(a, Equals, "d")
+	ch.Assert(string(a), Equals, "d")
 }
 
 func (t *CacherSuite) TestDelete(ch *C) {
@@ -56,11 +56,11 @@ func (t *CacherSuite) TestDelete(ch *C) {
 
 	cacher.InitCache(opts)
 
-	cacher.Set("e", "f")
+	cacher.Set("e", []byte("f"))
 
 	cacher.Delete("e")
 
 	a := cacher.Get("e")
 
-	ch.Assert(a, Equals, "")
+	ch.Assert(len(a), Equals, 0)
 }

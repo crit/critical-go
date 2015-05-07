@@ -1,11 +1,12 @@
 package cacher
 
 import (
-	"github.com/bradfitz/gomemcache/memcache"
-	"github.com/pmylund/go-cache"
 	"log"
 	"strings"
 	"time"
+
+	"github.com/bradfitz/gomemcache/memcache"
+	"github.com/pmylund/go-cache"
 )
 
 var mc *memcache.Client
@@ -34,7 +35,7 @@ func InitCache(options Options) {
 
 	if cacher.Hosts == "" {
 		cacher.Engine = LOCALCACHE
-		log.Println("-- Overriding Engine with LOCALCACHE since Hosts is empty --")
+		logThis("Overriding Engine with LOCALCACHE since Hosts is empty")
 	}
 
 	switch cacher.Engine {
@@ -46,7 +47,7 @@ func InitCache(options Options) {
 	}
 }
 
-func Set(key, value string) {
+func Set(key string, value []byte) {
 	switch cacher.Engine {
 	case LOCALCACHE:
 		lcSet(key, value)
@@ -55,7 +56,7 @@ func Set(key, value string) {
 	}
 }
 
-func Get(key string) string {
+func Get(key string) []byte {
 	switch cacher.Engine {
 	case MEMCACHE:
 		return mcGet(key)
@@ -63,7 +64,7 @@ func Get(key string) string {
 		return lcGet(key)
 	}
 
-	return ""
+	return []byte{}
 }
 
 func Delete(key string) {
@@ -75,36 +76,40 @@ func Delete(key string) {
 	}
 }
 
-func mcSet(key, value string) {
-	if err := mc.Add(&memcache.Item{Key: key, Value: []byte(value)}); err != nil {
-		log.Println(err.Error())
+func mcSet(key string, value []byte) {
+	if err := mc.Add(&memcache.Item{Key: key, Value: value}); err != nil {
+		logThis(err.Error())
 	}
 }
 
-func mcGet(key string) string {
+func mcGet(key string) []byte {
 	item, err := mc.Get(key)
 
 	if err != nil {
-		log.Println(err.Error())
-		return ""
+		logThis(err.Error())
+		return []byte{}
 	}
 
-	return string(item.Value)
+	return []byte(item.Value)
 }
 
-func lcSet(key, value string) {
+func lcSet(key string, value []byte) {
 	if err := lc.Add(key, value, 24*time.Hour); err != nil {
-		log.Println(err.Error())
+		logThis(err.Error())
 	}
 }
 
-func lcGet(key string) string {
+func lcGet(key string) []byte {
 	item, found := lc.Get(key)
 
 	if !found {
-		log.Println("LC Cache miss")
-		return ""
+		logThis("LOCALCACHE miss on " + key)
+		return []byte{}
 	}
 
-	return item.(string)
+	return item.([]byte)
+}
+
+func logThis(msg string) {
+	log.Printf("[CACHER] %s", msg)
 }
