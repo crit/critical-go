@@ -1,8 +1,9 @@
 package cacher_test
 
 import (
-	"github.com/crit/critical-go/cacher"
 	"testing"
+
+	"github.com/crit/critical-go/cacher"
 
 	. "gopkg.in/check.v1"
 )

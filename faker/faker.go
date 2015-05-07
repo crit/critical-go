@@ -2,7 +2,6 @@ package faker
 
 import (
 	"strings"
-
 	"time"
 )
 
