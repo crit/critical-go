@@ -1,7 +1,7 @@
 package faker
 
 import (
-	"github.com/crit/critical-go/data"
+	"github.com/crit/critical-go/faker/data"
 )
 
 func randomName() string {
