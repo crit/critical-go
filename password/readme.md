@@ -1,6 +1,6 @@
 # password
 
-```golang
+```go
 package main
 
 import (

@@ -5,7 +5,7 @@
 - S3 (Amazon's S3)
 - Redis
 
-```golang
+```go
 package main
 
 import (

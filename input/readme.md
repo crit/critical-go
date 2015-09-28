@@ -1,6 +1,6 @@
 # input
 
-```golang
+```go
 package main
 
 import (

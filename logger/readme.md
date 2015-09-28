@@ -22,7 +22,7 @@
 - Fatalf
 - Fatalln
 
-```golang
+```go
 package main
 
 input "github.com/crit/critical-go/logger"
