@@ -11,10 +11,13 @@ type Database interface {
 	Connection() *gorm.DB
 }
 
+// Mock returns an unconnected Database object
 func Mock() Database {
 	return mock{}
 }
 
+// New returns an unconnected Database object that is setup to use
+// a specific database driver.
 func New(cfg Config) Database {
 	switch cfg.Driver {
 	case "mssql":
