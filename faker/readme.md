@@ -7,7 +7,7 @@
 - Email
 - Name
 
-```golang
+```go
 package main
 
 import (
