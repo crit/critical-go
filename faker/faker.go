@@ -1,11 +1,12 @@
 package faker
 
 import (
+	"fmt"
 	"strings"
 	"time"
 )
 
-func getOption(def int, max []int) int {
+func firstOrDefault(max []int, def int) int {
 	if len(max) == 0 {
 		return def
 	}
@@ -14,11 +15,11 @@ func getOption(def int, max []int) int {
 }
 
 func Words(max ...int) string {
-	return randomWords(1, getOption(8, max))
+	return randomWords(1, firstOrDefault(max, 8))
 }
 
 func Sentences(max ...int) string {
-	return randomSentences(1, getOption(10, max))
+	return randomSentences(1, firstOrDefault(max, 10))
 }
 
 func Date() time.Time {
@@ -26,12 +27,17 @@ func Date() time.Time {
 }
 
 func Number(max ...int) int {
-	return randomInRange(1, getOption(100, max))
+	return randomInRange(1, firstOrDefault(max, 100))
 }
 
 func Email() string {
-	a := randomWords(1, 1)
-	return strings.ToLower(a) + "@example.com"
+	parts := strings.Split(randomName(), " ")
+
+	return fmt.Sprintf(
+		"%s@%s.com",
+		strings.ToLower(parts[0]),
+		strings.ToLower(parts[1]),
+	)
 }
 
 func Name() string {

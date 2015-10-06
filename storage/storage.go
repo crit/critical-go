@@ -24,7 +24,7 @@ type Storage interface {
 }
 
 // Local returns an instance of Storage backed only by the
-// running binary's memory.
+// memory of the running binary.
 func Local() Storage {
 	return local.New()
 }
