@@ -16,9 +16,7 @@ func Unequal(current string, request string) bool {
 	a := []byte(current)
 	b := []byte(request)
 
-	if err := bcrypt.CompareHashAndPassword(a, b); err != nil {
-		return true
-	}
+	err := bcrypt.CompareHashAndPassword(a, b)
 
-	return false
+	return err != nil
 }
