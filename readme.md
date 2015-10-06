@@ -2,15 +2,15 @@
 
 Libraries and frameworks.
 
-[x] [database](database)
-[x] [faker](faker)
-[x] [input](input)
-[x] [logger](logger)
-[x] [password](password)
-[x] [storage](storage)
-[ ] authorization
-[ ] authentication
-[ ] localization
-[ ] mail
-[ ] validation
-[ ] payment
+- [x] [database](database)
+- [x] [faker](faker)
+- [x] [input](input)
+- [x] [logger](logger)
+- [x] [password](password)
+- [x] [storage](storage)
+- [ ] authorization
+- [ ] authentication
+- [ ] localization
+- [ ] mail
+- [ ] validation
+- [ ] payment
