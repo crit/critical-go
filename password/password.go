@@ -18,5 +18,5 @@ func Unequal(current string, request string) bool {
 
 	err := bcrypt.CompareHashAndPassword(a, b)
 
-	return err != nil
+	return err == nil
 }
