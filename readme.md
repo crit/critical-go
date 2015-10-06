@@ -2,6 +2,11 @@
 
 Libraries, proxies, and facades.
 
+- [config](config)
+    + [x] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
 - [database](database)
     + [x] design
     + [ ] tests
