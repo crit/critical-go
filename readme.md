@@ -1,6 +1,6 @@
 # critical-go
 
-Libraries and frameworks.
+Libraries, proxies, and facades.
 
 - [x] [database](database)
 - [x] [faker](faker)
