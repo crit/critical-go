@@ -2,15 +2,63 @@
 
 Libraries, proxies, and facades.
 
-- [x] [database](database)
-- [x] [faker](faker)
-- [x] [input](input)
-- [x] [logger](logger)
-- [x] [password](password)
-- [x] [storage](storage)
-- [ ] authorization
-- [ ] authentication
-- [ ] localization
-- [ ] mail
-- [ ] validation
-- [ ] payment
+- [database](database)
+    + [x] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- [faker](faker)
+    + [x] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- [input](input)
+    + [x] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- [logger](logger) 
+    + [x] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- [password](password)
+    + [x] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- [storage](storage)
+    + [x] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- authorization
+    + [ ] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- authentication
+    + [ ] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- localization
+    + [ ] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- mail
+    + [ ] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- validation
+    + [ ] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
+- payment
+    + [ ] design
+    + [ ] tests
+    + [ ] documentation
+    + [ ] examples
