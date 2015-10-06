@@ -31,7 +31,7 @@ func (c Client) Connection() *gorm.DB {
 
 	if err != nil {
 		if c.log != nil {
-			c.log.Errorf("database.MySQL Connection Error: %s -> %s", c.dsn, err.Error())
+			c.log.Errorf("database.SQLite Connection Error: %s -> %s", c.dsn, err.Error())
 		}
 
 		conn = &db
