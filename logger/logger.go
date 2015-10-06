@@ -2,10 +2,8 @@ package logger
 
 import (
 	"os"
-	"strconv"
 
 	"github.com/Sirupsen/logrus"
-	kl "github.com/kyani-inc/logger"
 )
 
 type Logger interface {
@@ -57,14 +55,4 @@ func File(file string) Logger {
 	a.Out = f
 
 	return a
-}
-
-func Papertrail(host, port, appname string) Logger {
-	p, _ := strconv.Atoi(port)
-
-	return kl.New(kl.Config{
-		Appname: appname,
-		Host:    host,
-		Port:    p,
-	})
 }
