@@ -1,6 +1,9 @@
 package database
 
 import (
+	"github.com/crit/critical-go/database/mssql"
+	"github.com/crit/critical-go/database/mysql"
+	"github.com/crit/critical-go/database/sqlite"
 	"github.com/jinzhu/gorm"
 )
 
@@ -11,20 +14,17 @@ type Database interface {
 	Connection() *gorm.DB
 }
 
-// Mock returns an unconnected Database object
-func Mock() Database {
-	return mock{}
-}
-
 // New returns an unconnected Database object that is setup to use
 // a specific database driver.
 func New(cfg Config) Database {
 	switch cfg.Driver {
 	case "mssql":
-		return mssqlManager{cfg: cfg}
+		return mssql.New(cfg.DSN, cfg.MaxConnections(), cfg.IdleConnections(), cfg.Logger)
 	case "mysql":
-		return mysqlManager{cfg: cfg}
+		return mysql.New(cfg.DSN, cfg.MaxConnections(), cfg.IdleConnections(), cfg.Logger)
+	case "sqlite":
+		return sqlite.New(cfg.DSN, cfg.Logger)
 	default:
-		return mock{}
+		return sqlite.New("/tmp/gorm.db?loc=auto", cfg.Logger)
 	}
 }
