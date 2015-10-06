@@ -1,15 +1,16 @@
 # critical-go
 
-- [database](database)
-- [faker](faker)
-- [input](input)
-- [logger](logger)
-- [password](password)
-- [storage](storage)
+Libraries and frameworks.
 
-- authorization
-- authentication
-- localization
-- mail
-- validation
-- payment
+[x] [database](database)
+[x] [faker](faker)
+[x] [input](input)
+[x] [logger](logger)
+[x] [password](password)
+[x] [storage](storage)
+[ ] authorization
+[ ] authentication
+[ ] localization
+[ ] mail
+[ ] validation
+[ ] payment
