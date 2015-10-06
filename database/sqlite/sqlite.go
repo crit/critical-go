@@ -27,6 +27,11 @@ func (c Client) Connection() *gorm.DB {
 	lock.Lock()
 	defer lock.Unlock()
 
+	// when handed the lock, conn may be initialized
+	if conn != nil {
+		return conn
+	}
+
 	db, err := gorm.Open("sqlite3", c.dsn)
 
 	if err != nil {
