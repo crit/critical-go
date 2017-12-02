@@ -8,7 +8,6 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -89,7 +88,7 @@ func createDatabase(dsn string) error {
 }
 
 func createMigrationTableIfNotExists() error {
-	rows, err := db.Query("SHOW TABLES LIKE 'migrations'")
+	rows, err := db.Query("SHOW TABLES LIKE '_migrations'")
 	if err != nil {
 		return err
 	}
@@ -166,7 +165,7 @@ func runNewMigrationScripts(ranScripts map[string]bool, directory string, files 
 }
 
 func recordScriptRun(file string) error {
-	_, err := db.Exec("INSERT INTO migrations (script, date_ran) VALUES (?, ?)", file, time.Now())
+	_, err := db.Exec("INSERT INTO _migrations (script, date_ran) VALUES (?, NOW())", file)
 	return err
 }
 
@@ -187,7 +186,7 @@ func runScript(path string) error {
 }
 
 var createMigrationTableSQL = `
-	CREATE TABLE migrations (
+	CREATE TABLE _migrations (
 		script VARCHAR(255) NOT NULL,
 		date_ran DATETIME NOT NULL
 	);
@@ -196,5 +195,5 @@ var createMigrationTableSQL = `
 var getRanMigrationsSQL = `
 	SELECT
 		script
-	FROM migrations
+	FROM _migrations
 `
