@@ -165,7 +165,7 @@ func runNewMigrationScripts(ranScripts map[string]bool, directory string, files 
 }
 
 func recordScriptRun(file string) error {
-	_, err := db.Exec("INSERT INTO _migrations (script, date_ran) VALUES (?, NOW())", file)
+	_, err := db.Exec("INSERT INTO _migrations (script) VALUES (?)", file)
 	return err
 }
 
@@ -188,7 +188,7 @@ func runScript(path string) error {
 var createMigrationTableSQL = `
 	CREATE TABLE _migrations (
 		script VARCHAR(255) NOT NULL,
-		date_ran DATETIME NOT NULL
+		date_ran DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 	);
 `
 
