@@ -6,6 +6,8 @@ import (
 	"log"
 )
 
+var BUILD = ""
+
 func main() {
 	flag.Parse()
 
@@ -20,6 +22,7 @@ func main() {
 	err := Migrate(dsn, scripts)
 
 	if err != nil {
+		log.Println("build: ", BUILD)
 		log.Println("supplied dsn: ", dsn)
 		log.Println("supplied scriptsDirectory: ", scripts)
 		log.Fatal(err.Error())
