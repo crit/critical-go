@@ -16,6 +16,7 @@ func main() {
 
 	if dsn == "" || scripts == "" {
 		log.Println(`Usage: migrator "dsn" "scriptsDirectory"`)
+		log.Println(`DSN Format: un:pw@tcp(server:port)/db_name?multiStatements=true&collation=utf8mb4_general_ci`)
 		os.Exit(1)
 	}
 

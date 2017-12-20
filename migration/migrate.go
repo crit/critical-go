@@ -88,27 +88,22 @@ func createDatabase(dsn string) error {
 }
 
 func createMigrationTableIfNotExists() error {
-	rows, err := db.Query("SHOW TABLES LIKE '_migrations'")
-	if err != nil {
-		return err
-	}
-	defer rows.Close()
+	const createMigrationTableSQL = `
+		CREATE TABLE IF NOT EXISTS _migrations (
+			script VARCHAR(255) NOT NULL,
+			date_ran DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+		);
+	`
 
-	// Table doesn't exist
-	if !rows.Next() {
-		_, err := db.Exec(createMigrationTableSQL)
-		if err != nil {
-			return err
-		}
-	}
+	_, err := db.Exec(createMigrationTableSQL)
 
-	return nil
+	return err
 }
 
 func getRanScripts() (scripts map[string]bool, err error) {
 	scripts = make(map[string]bool)
 
-	rows, err := db.Query(getRanMigrationsSQL)
+	rows, err := db.Query(`SELECT script FROM _migrations`)
 	if err != nil {
 		return scripts, err
 	}
@@ -184,16 +179,3 @@ func runScript(path string) error {
 
 	return nil
 }
-
-var createMigrationTableSQL = `
-	CREATE TABLE _migrations (
-		script VARCHAR(255) NOT NULL,
-		date_ran DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-	);
-`
-
-var getRanMigrationsSQL = `
-	SELECT
-		script
-	FROM _migrations
-`
