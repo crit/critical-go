@@ -1,13 +1,13 @@
 package main
 
 import (
+	"fmt"
+	"github.com/rs/xid"
+	"github.com/stretchr/testify/assert"
 	"github.com/subosito/gotenv"
+	"log"
 	"os"
 	"testing"
-	"github.com/stretchr/testify/assert"
-	"github.com/rs/xid"
-	"fmt"
-	"log"
 )
 
 func createTempTestingDir(token string) string {

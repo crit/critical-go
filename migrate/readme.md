@@ -1,4 +1,4 @@
-# Migration
+# Migrate
 
 DSN format: `un:pw@tcp(server:port)/db_name?multiStatements=true&collation=utf8mb4_general_ci`
 
@@ -8,11 +8,11 @@ DSN format: `un:pw@tcp(server:port)/db_name?multiStatements=true&collation=utf8m
 
 ## Usage
 
-- Linux: `./bin/linux/migrator "dsn" "scriptsDirectory"`
-- Mac: `./bin/darwin/migrator "dsn" "scriptsDirectory"`
+- Linux: `./bin/linux/migrate "dsn" "scriptsDirectory"`
+- Mac: `./bin/darwin/migrate "dsn" "scriptsDirectory"`
 - Windows: TBD
 
-Example: `./bin/linux/migrator "un:pw@tcp(server:port)/db_name?multiStatements=true&collation=utf8mb4_general_ci" "/code/folder_of_sql_files"`
+Example: `./bin/linux/migrate "un:pw@tcp(server:port)/db_name?multiStatements=true&collation=utf8mb4_general_ci" "/code/folder_of_sql_files"`
 
 ## Supported DB Drivers
 

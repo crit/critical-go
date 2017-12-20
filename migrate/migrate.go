@@ -13,8 +13,8 @@ import (
 )
 
 var (
-	db                 *sql.DB
-	dbNameRegex        = regexp.MustCompile(`.+\/(.+)\?.+`)
+	db          *sql.DB
+	dbNameRegex = regexp.MustCompile(`.+\/(.+)\?.+`)
 )
 
 // Migrate runs the migrations in scriptDire

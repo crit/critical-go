@@ -1,2 +1,2 @@
 .env
-migration/bin
+migrate/bin

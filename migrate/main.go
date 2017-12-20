@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"os"
 	"log"
+	"os"
 )
 
 var BUILD = ""
@@ -15,7 +15,7 @@ func main() {
 	scripts := flag.Arg(1)
 
 	if dsn == "" || scripts == "" {
-		log.Println(`Usage: migrator "dsn" "scriptsDirectory"`)
+		log.Println(`Usage: migrate "dsn" "scriptsDirectory"`)
 		log.Println(`DSN Format: un:pw@tcp(server:port)/db_name?multiStatements=true&collation=utf8mb4_general_ci`)
 		os.Exit(1)
 	}
@@ -24,8 +24,6 @@ func main() {
 
 	if err != nil {
 		log.Println("build: ", BUILD)
-		log.Println("supplied dsn: ", dsn)
-		log.Println("supplied scriptsDirectory: ", scripts)
 		log.Fatal(err.Error())
 	}
 }
