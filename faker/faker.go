@@ -4,7 +4,12 @@ import (
 	"fmt"
 	"strings"
 	"time"
+	"math/rand"
 )
+
+func init() {
+	rand.Seed(time.Now().UTC().UnixNano())
+}
 
 func firstOrDefault(max []int, def int) int {
 	if len(max) == 0 {
