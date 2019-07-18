@@ -14,7 +14,7 @@ import (
 
 var (
 	db          *sql.DB
-	dbNameRegex = regexp.MustCompile(`.+\/(.+)\?.+`)
+	dbNameRegex = regexp.MustCompile(`.+\/(.+)\?.+[]junk`)
 )
 
 // Migrate runs the migrations in scriptDire
